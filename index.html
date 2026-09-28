@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bir şehri iki kez kaybetmemek için</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+button{font:inherit;font-weight:600;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:999px;padding:8px 18px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--warn);border-color:var(--warn);color:#fff}
+.shake{animation:sh .5s linear 3}@keyframes sh{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@media(prefers-reduced-motion:reduce){.shake{animation:none}}
+:root{--bg:#eef2ee;--ink:#0d2a38;--mute:#52686f;--deep:#0b2a3a;--sea:#1d6f8c;--wet:#7fb88c;--paper:#f8faf7;--warn:#c8412f;--gold:#e9b443;--line:#c9d3cd;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a181e;--ink:#e4ede9;--mute:#98adb0;--paper:#12252c;--line:#27404a;--wet:#4f8a5e}}
+:root[data-theme="dark"]{--bg:#0a181e;--ink:#e4ede9;--mute:#98adb0;--paper:#12252c;--line:#27404a;--wet:#4f8a5e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.hero{background:var(--deep);color:#eaf3f1;padding:72px 24px 64px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:clamp(2.4rem,7vw,5.2rem);font-weight:800;letter-spacing:-.03em;line-height:1;margin:0 0 20px;max-width:14ch}
+.hero p{font-size:1.15rem;max-width:52ch;margin:0;color:#b9d2d3}
+section{padding:56px 24px 8px}
+h2{font-size:clamp(1.6rem,3.5vw,2.3rem);letter-spacing:-.02em;line-height:1.1;margin:0 0 10px;font-weight:800;max-width:22ch}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 24px}
+.stage{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:8px}
+.ctl label{font-weight:600}
+input[type=range]{flex:1;min-width:200px;accent-color:var(--sea);height:32px}
+#lv{font-size:1.8rem;font-weight:800;min-width:4.2ch}
+.row{margin-top:14px}
+.row b{display:block;margin-bottom:2px}
+svg{width:100%;height:auto;display:block;border-radius:8px}
+.score{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.95rem;color:var(--mute);margin-top:4px}
+.score em{font-style:normal;font-weight:800;color:var(--ink)}
+.bad em{color:var(--warn)}
+.ideas{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.ideas li{border-left:4px solid var(--sea);padding:6px 0 6px 20px;margin:0 0 26px;max-width:72ch}
+.ideas li:nth-child(even){border-color:var(--wet)}
+.ideas h3{margin:0 0 4px;font-size:1.3rem;letter-spacing:-.01em}
+.ideas p{margin:0 0 6px}
+.cop{color:var(--mute);font-size:.95rem}
+.cop b{color:var(--ink)}
+.ask{background:var(--deep);color:#eaf3f1;margin-top:40px;padding:48px 24px 64px}
+.ask h2{max-width:20ch}
+.ask ol{margin:16px 0 0;padding-left:1.2em;max-width:62ch}
+.ask li{margin-bottom:12px;color:#c9dcdc}
+.ask li b{color:#fff}
+.fine{font-size:.85rem;color:var(--mute);margin-top:10px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<h1>Bir şehri iki kez kaybetmemek için</h1>
+<p>İklim değişikliği tek başına gelmiyor.
+Deniz yükseliyor, aşırı yağışlar artıyor, sıcaklıklar yükseliyor ve afetler şehirlerin kırılganlıklarını görünür hale getiriyor.
+
+Mesele yalnızca daha güçlü şehirler kurmak değil;</p>
+</div></header>
+
+<section><div class="wrap">
+<h2>Aynı deniz. Aynı deprem. İki farklı şehir.
+
+Bir afetin sonucu yalnızca afetin büyüklüğüne bağlı değildir.
+Şehrin nasıl planlandığı, nerede yapılaştığı ve doğayla nasıl ilişki kurduğu sonucu değiştirir.
+
+Aynı su yükselir.
+Aynı dalga gelir.
+Ama her şehir aynı bedeli ödemez.</h2>
+
+<div class="stage">
+<div class="ctl"><label for="s">Deniz Seviyesi + Fırtına Dalgası</label><input id="s" type="range" min="0" max="250" value="0" step="5"><span id="lv">+0,0 m</span><button id="q" aria-pressed="false">Depremi başlat</button></div>
+<div class="row"><b>Eski Çekmece: Binalar kıyıya kadar</b><svg id="a" viewBox="0 0 800 200" role="img" aria-label="Klasik kıyı planı kesiti"></svg><div class="score bad"><span>Hasar gören bina: <em id="na">0</em> / 6</span></div></div>
+<div class="row"><b>Yeni Çekmece: Kıyıda sulak alan, Binalar sağlam zeminde, Kritik yapılar yalıtımlı</b><svg id="b" viewBox="0 0 800 200" role="img" aria-label="Sulak alan kuşaklı plan kesiti"></svg><div class="score"><span>Hasar gören bina: <em id="nb">0</em> / 6</span><span>Suyu tutan sulak alan: <em id="wb">0</em>%</span></div></div>
+
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Sekiz fikir. Tek bir hedef.</h2>
+<p class="lead">Afetlere dayanıklı şehirler yalnızca daha sağlam binalardan oluşmaz.
+Asıl dayanıklılık; toprağın, suyun, yapının ve yaşamın birlikte tasarlanmasıyla başlar.</p>
+<ol class="ideas">
+<li><h3> Hayatı sağlam zemine taşı</h3><p>Kıyıdaki arsa sahibi imar hakkını, sağlam zeminde yükselen mahallelerde hisseye çevirir. Kimsenin arazisi elinden alınmaz, hak yer değiştirir. Geri çekilme bir kayıp değil, bir takas olur.</p><p class="cop"><b>Tehdit:</b> deniz ve deprem. Kıyı hem su alır hem sıvılaşır. <b>COP'a mesaj:</b> Geri çekilme, tazminat ödemeden mümkün.</p></li>
+<li><h3>Zemin pasaportu</h3><p>Her parselin sıvılaşma ve sarsıntı kaydı halka açık bir defterde tutulur. Yapı, parselin pasaportuna göre tasarlanmadan ruhsat alamaz. Kimse zemini bilmeden ev satın almaz.</p><p class="cop"><b>Tehdit:</b> deprem. <b>COP'a mesaj:</b> Risk şeffaf olduğunda planlama ve sigorta adil çalışır.</p></li>
+<li><h3>Sulak alan sigortalı bir varlıktır</h3><p>Kıyı kuşağı, önlediği hasar kadar değer taşır. Sigorta primindeki düşüş ve dayanıklılık tahvili kuşağın bakımını finanse eder. Sıvılaşan zeminde yapı yerine sulak alan durduğu için, sarsıntı burada zarar yerine sadece çamur bırakır.</p><p class="cop"><b>Tehdit:</b> deniz ve deprem. <b>COP'a mesaj:</b> Uyum finansmanı, bankaların anlayacağı dilde yazılabilir.</p></li>
+<li><h3>Hafif yapı, düşük karbon: tek seçim</h3><p>Ahşap-çelik hibrit yapı betondan hafif olduğu için depremde daha az yük alır, aynı zamanda gömülü karbonu düşürür. Her parselin metrekare başına karbon bütçesi halka açık defterde izlenir.</p><p class="cop"><b>Tehdit:</b> deprem ve iklim. <b>COP'a mesaj:</b> Paris'in hedefleri şehir ölçeğinde ölçülebilir, dayanıklılıkla çelişmez.</p></li>
+<li><h3>Enkaz bankası</h3><p>Yıkılan şehrin enkazı atık değil, planlı bir kaynaktır. Ayrıştırılır, geri dönüştürülmüş agrega olarak yeni yapılarda kullanılır. Yıkım, karbon tasarrufu fırsatına dönüşür.</p><p class="cop"><b>Tehdit:</b> deprem sonrası. <b>COP'a mesaj:</b> Afet sonrası yeniden inşa, iklim hedeflerinin parçası olabilir.</p></li>
+<li><h3>Onarılabilir tasarım</h3><p>Bina yıkılmamakla yetinmez, hızlı onarılmak için tasarlanır: değiştirilebilir cephe modülleri, hasarı üstlenmek için tasarlanmış sigorta elemanları. Ölçüt: deprem sonrası kaç günde geri dönülüyor.</p><p class="cop"><b>Tehdit:</b> deprem. <b>COP'a mesaj:</b> Dayanıklılık, ayakta kalmak kadar hızlı toparlanmaktır.</p></li>
+<li><h3>Günlük kullanım, afet kapasitesidir</h3><p>Mahalle mutfağı, kütüphane ve tamir atölyesi, afet gününde bağımsız enerjili sığınağa dönüşür. Hazırlık ayrı bir maliyet değil, her gün kullanılan bir tesistir. Başarı ölçütü: bir mahalle, elektriksiz kaç gün ayakta kalıyor.</p><p class="cop"><b>Tehdit:</b> deprem, sel ve sıcak hava. <b>COP'a mesaj:</b> Afet hazırlığı, işletme gideri olarak finanse edilebilir.</p></li>
+<li><h3>Geri dönüş payı</h3><p>Eski sakinler, mahallenin arazi vakfında pay sahibi olarak döner. Sokak izleri ve mahalle isimleri korunur. Yenilenen şehir, onu kaybedenlerin olur.</p><p class="cop"><b>Tehdit:</b> yerinden edilme. <b>COP'a mesaj:</b> Dayanıklılık, kimsenin dışarıda kalmadığı yerde kalıcıdır.</p></li>
+</ol>
+</div></section>
+
+<div class="ask"><div class="wrap">
+<h2>Bunu bir şehir değil, bir şablon yapalım</h2>
+<p style="max-width:60ch;color:#b9d2d3;margin:0">Sekiz fikir açık bir defterde yayımlanır. Afetle yıkılan ya da yıkılma riski taşıyan her şehir onu kopyalayıp kendi zeminine uyarlayabilir. COP31'den üç şey istiyoruz:</p>
+<ol>
+<li><b>Şablonu tanıyın.</b> Kent ölçeğinde bir referans yöntem olarak kabul edin.</li>
+<li><b>Hak takasını finanse edin.</b> Geri çekilmeyi, deniz ve deprem uyumu için uygun bir finansman kalemi sayın.</li>
+<li><b>Şehir karbon defterini raporlamaya dahil edin.</b> Gömülü karbonu kent ölçeğinde görünür kılın.</li>
+</ol>
+</div></div>
+
+<script>
+var pts=[[0,190],[240,172],[400,150],[540,118],[800,78]];
+var SEA0=172,K=24; /* y at +0 m, px per meter */
+function gy(x){for(var i=1;i<pts.length;i++){if(x<=pts[i][0]){var a=pts[i-1],b=pts[i];return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]);}}return pts[pts.length-1][1]}
+var ground="M0 200 "+pts.map(function(p){return "L"+p[0]+" "+p[1]}).join(" ")+" L800 200Z";
+var A=[250,290,330,370,410,440],B=[620,660,700,740,770,790],SOFT=450,quake=false;
+function draw(id,xs,belt,m){
+var iso=belt;
+var wy=SEA0-m*K,n=0;
+var s='<rect width="800" height="200" fill="#dbe9e6" opacity=".35"/>';
+s+='<rect x="0" y="'+wy+'" width="800" height="'+(200-wy)+'" fill="#1d6f8c"/>';
+s+='<path d="'+ground+'" fill="#c9b48a"/>';
+if(belt){s+='<path d="M180 200 L180 '+gy(180)+' L560 '+gy(560)+' L560 200Z" fill="#7fb88c"/>';
+for(var r=200;r<560;r+=18){s+='<path d="M'+r+' '+gy(r)+' v-9 M'+(r+5)+' '+gy(r+5)+' v-6" stroke="#3f7d4f" stroke-width="2"/>';}}
+if(quake){s+='<path d="M0 200 L0 '+gy(0)+' L'+SOFT+' '+gy(SOFT)+' L'+SOFT+' 200Z" fill="none" stroke="#e9b443" stroke-width="3" stroke-dasharray="6 4"/>';}
+xs.forEach(function(x){var g=gy(x),fl=wy<g,soft=quake&&x<SOFT;if(fl||soft)n++;var tilt=soft&&!belt?(x%80<40?-14:11):0;
+s+='<g transform="rotate('+tilt+' '+x+' '+g+')"><rect x="'+(x-12)+'" y="'+(g-26)+'" width="24" height="26" fill="'+(fl||soft?"#c8412f":"#f0ebe0")+'" stroke="#0d2a38" stroke-width="1.5"/><path d="M'+(x-14)+' '+(g-26)+' L'+x+' '+(g-38)+' L'+(x+14)+' '+(g-26)+'Z" fill="#0d2a38"/></g>';
+if(iso)s+='<rect x="'+(x-14)+'" y="'+(g-2)+'" width="28" height="4" fill="#e9b443"/>';});
+var el=document.getElementById(id);el.innerHTML=s;return n;}
+function upd(){
+var m=document.getElementById("s").value/100;
+document.getElementById("lv").textContent="+"+m.toFixed(1).replace(".",",")+" m";
+document.getElementById("na").textContent=draw("a",A,false,m);
+document.getElementById("nb").textContent=draw("b",B,true,m);
+var cap=Math.min(100,Math.round(m/2.5*100));
+document.getElementById("wb").textContent=m<0.2?0:cap;
+}
+document.getElementById("s").addEventListener("input",upd);
+document.getElementById("q").addEventListener("click",function(){quake=!quake;this.setAttribute("aria-pressed",quake);this.textContent=quake?"Depremi durdur":"Depremi başlat";
+if(quake){["a","b"].forEach(function(i){var e=document.getElementById(i);e.classList.remove("shake");void e.getBBox();e.classList.add("shake")});}upd();});
+upd();
+</script>
+</body>
+</html>
